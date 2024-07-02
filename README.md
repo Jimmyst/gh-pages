@@ -1,2 +1,1 @@
-# gh-pages
-gh-pages
+see details here https://dev.to/dwtoledo/deploying-a-vite-app-on-github-pages-using-github-actions-with-github-secrets-1hn0
