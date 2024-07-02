@@ -19,17 +19,19 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+let globalCounter = 0
 // const analytics = getAnalytics(app);
-
-
-export async function setupCounter(element) {
-  
-  let counter
-  const querySnapshot = await getDocs(collection(db, "/test"));
+const querySnapshot = await getDocs(collection(db, "/test"));
   querySnapshot.forEach((doc) => {
-    counter = doc.data().value
+    globalCounter = doc.data().value
     console.log(`${doc.id} => ${doc.data().value}`);
   });
+
+
+export function setupCounter(element) {
+  
+  let counter = globalCounter
+  
   const setCounter = (count) => {
     counter = count
     element.innerHTML = `count is ${counter}`
