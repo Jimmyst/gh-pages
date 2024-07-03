@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { getDatabase, ref, onValue } from "firebase/database";
+
 
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
   // TODO: Add SDKs for Firebase products that you want to use
@@ -19,6 +21,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const realtime_database = getDatabase(app);
 let globalCounter = 0
 // const analytics = getAnalytics(app);
 const querySnapshot = await getDocs(collection(db, "/test"));
@@ -27,6 +30,12 @@ const querySnapshot = await getDocs(collection(db, "/test"));
     console.log(`${doc.id} => ${doc.data().value}`);
   });
 
+
+  const starCountRef = ref(realtime_database, '/datapoints/data');
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data)
+  });
 
 export function setupCounter(element) {
   
