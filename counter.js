@@ -31,7 +31,7 @@ const querySnapshot = await getDocs(collection(db, "/test"));
   });
 
 
-  const starCountRef = ref(realtime_database, '/datapoints/data');
+  const starCountRef = ref(realtime_database, '/products');
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val();
     console.log(data)

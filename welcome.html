@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сетка объектов продуктов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .category {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        .category h2 {
+            margin-top: 0;
+        }
+        .nutrition-info {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="category">
+        <h2>Овощи</h2>
+        <select onchange="updateNutritionInfo(this)">
+            <option value="0">Выберите продукт</option>
+            <option value="broccoli">Брокколи</option>
+            <option value="carrot">Морковь</option>
+            <option value="pepper">Перец</option>
+        </select>
+        <div class="nutrition-info"></div>
+    </div>
+
+    <div class="category">
+        <h2>Мясо</h2>
+        <select onchange="updateNutritionInfo(this)">
+            <option value="0">Выберите продукт</option>
+            <option value="chicken">Курица</option>
+            <option value="beef">Говядина</option>
+            <option value="pork">Свинина</option>
+        </select>
+        <div class="nutrition-info"></div>
+    </div>
+
+    <div class="category">
+        <h2>Выпечка</h2>
+        <select onchange="updateNutritionInfo(this)">
+            <option value="0">Выберите продукт</option>
+            <option value="bread">Хлеб</option>
+            <option value="croissant">Круассан</option>
+            <option value="muffin">Маффин</option>
+        </select>
+        <div class="nutrition-info"></div>
+    </div>
+
+    <script>
+        const nutritionData = {
+            broccoli: { calories: 34, proteins: 2.8, fats: 0.4, carbs: 6.6 },
+            carrot: { calories: 41, proteins: 0.9, fats: 0.2, carbs: 9.6 },
+            pepper: { calories: 31, proteins: 1, fats: 0.3, carbs: 6 },
+            chicken: { calories: 239, proteins: 27, fats: 14, carbs: 0 },
+            beef: { calories: 250, proteins: 26, fats: 15, carbs: 0 },
+            pork: { calories: 242, proteins: 22, fats: 14, carbs: 0 },
+            bread: { calories: 265, proteins: 9, fats: 3.2, carbs: 49 },
+            croissant: { calories: 406, proteins: 8.2, fats: 21, carbs: 45 },
+            muffin: { calories: 377, proteins: 6, fats: 14, carbs: 56 },
+        };
+
+        function updateNutritionInfo(select) {
+            const selectedValue = select.value;
+            const infoDiv = select.nextElementSibling;
+
+            if (selectedValue === "0") {
+                infoDiv.innerHTML = "";
+            } else {
+                const nutrition = nutritionData[selectedValue];
+                infoDiv.innerHTML = `
+                    <p>Калории: ${nutrition.calories} ккал</p>
+                    <p>Белки: ${nutrition.proteins} г</p>
+                    <p>Жиры: ${nutrition.fats} г</p>
+                    <p>Углеводы: ${nutrition.carbs} г</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
