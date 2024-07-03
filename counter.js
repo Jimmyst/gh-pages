@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase,  ref, child, get } from "firebase/database";
 
 
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
@@ -31,11 +31,23 @@ const querySnapshot = await getDocs(collection(db, "/test"));
   });
 
 
-  const starCountRef = ref(realtime_database, '/products');
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val();
-    console.log(data)
+  // const starCountRef = ref(realtime_database, '/products');
+  // onValue(starCountRef, (snapshot) => {
+  //   const data = snapshot.val();
+  //   console.log(data)
+  // });
+
+  const dbRef = ref(realtime_database);
+  get(child(dbRef, `/products`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
   });
+
 
 export function setupCounter(element) {
   
