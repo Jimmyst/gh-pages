@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { getDatabase,  ref, child, get } from "firebase/database";
+import { getAuth,signInWithEmailAndPassword, createUserWithEmailAndPassword  } from 'firebase/auth';
 
 
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
@@ -22,6 +23,7 @@ import { getDatabase,  ref, child, get } from "firebase/database";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const realtime_database = getDatabase(app);
+const auth = getAuth(app)
 let globalCounter = 0
 // const analytics = getAnalytics(app);
 const querySnapshot = await getDocs(collection(db, "/test"));
@@ -60,3 +62,51 @@ export function setupCounter(element) {
   element.addEventListener('click', () => setCounter(counter + 1))
   setCounter(counter)
 }
+
+
+//авторизация
+const authForm = document.getElementById('auth-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const signInButton = document.getElementById('sign-in');
+        const signUpButton = document.getElementById('sign-up');
+        const errorMessage = document.getElementById('error-message');
+
+
+        authForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const email = emailInput.value;
+          const password = passwordInput.value;
+
+          if (signInButton === event.submitter) {
+              SignIn(email, password);
+          } else if (signUpButton === event.submitter) {
+              SignUp(email, password);
+          }
+      });
+
+      // Sign in with email and password
+      function SignIn(email, password) {
+        signInWithEmailAndPassword(auth,email, password)
+              .then((userCredential) => {
+                  // Signed in
+                  const user = userCredential.user;
+                  console.log(user.uid) // Redirect to signed-in page
+              })
+              .catch((error) => {
+                  errorMessage.textContent = error.message;
+              });
+      }
+
+      // Sign up with email and password
+      function SignUp(email, password) {
+        createUserWithEmailAndPassword(auth,email, password)
+              .then((userCredential) => {
+                  // Signed up and signed in
+                  const user = userCredential.user;
+                  console.log(user.uid); // Redirect to signed-in page
+              })
+              .catch((error) => {
+                  errorMessage.textContent = error.message;
+              });
+      }
