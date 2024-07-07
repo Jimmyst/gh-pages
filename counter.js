@@ -40,13 +40,13 @@ querySnapshot.forEach((doc) => {
 //   const data = snapshot.val();
 //   console.log(data)
 // });
-let myProducts = {};
+let myCategories = {};
 const dbRef = ref(realtime_database);
-get(child(dbRef, `/products`))
+get(child(dbRef, `/categories`))
   .then((snapshot) => {
     if (snapshot.exists()) {
       console.log(snapshot.val());
-      myProducts = snapshot.val();
+      myCategories = snapshot.val();
       generateDivs();
     } else {
       console.log("No data available");
@@ -116,16 +116,27 @@ function SignUp(email, password) {
 //динамические обхекты
 
 function generateDivs() {
-  const container = document.getElementById("my_products");
-  for (const [key, value] of Object.entries(myProducts)) {
+  const container = document.getElementById("my_categories");
+  for (const [key, value] of Object.entries(myCategories)) {
     console.log(key, value);
+    //созщдаем div контейнер
+    const div_container = document.createElement("div");
+    div_container.className = 'div_container'+key
+
+    //наполняем дим контейнер кнопкой
     const button = document.createElement("button");
     button.className = "button_" + key;
     button.textContent = "Продукт базы: " + key;
     button.addEventListener("click", function (btn) {
       console.log("Нажат продукт " + this.className);
     });
-    container.appendChild(button);
+
+    //наполняем див конейтер изображением из базы даннызх
+    const img = document.createElement("img");
+    img.src = value['img']
+    div_container.appendChild(button)
+    div_container.appendChild(img)
+    container.appendChild(div_container);
 
   }
 }

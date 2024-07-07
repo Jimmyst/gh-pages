@@ -1,0 +1,63 @@
+{
+  "categories": {
+    "овощи": {
+      "products": {
+        "broccoli": {
+          "calories": 34,
+          "proteins": 2.8,
+          "fats": 0.4,
+          "carbs": 6.6
+        },
+        "carrot": {
+          "calories": 41,
+          "proteins": 0.9,
+          "fats": 0.2,
+          "carbs": 9.6
+        },
+        "pepper": { "calories": 31, "proteins": 1, "fats": 0.3, "carbs": 6 }
+      },
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO_M4PGiOsmr-zTzzFdlnpXQAoaYqHe1SV5g&s"
+    },
+	"выпечка": {
+		"products": {
+		  "broccoli": {
+			"calories": 34,
+			"proteins": 2.8,
+			"fats": 0.4,
+			"carbs": 6.6
+		  },
+		  "carrot": {
+			"calories": 41,
+			"proteins": 0.9,
+			"fats": 0.2,
+			"carbs": 9.6
+		  },
+		  "pepper": { "calories": 31, "proteins": 1, "fats": 0.3, "carbs": 6 }
+		},
+		"img": "https://i.pinimg.com/564x/d1/82/b2/d182b2eca5769eed8ae84d9c1fb3050f.jpg"
+	  }
+  },
+  "products": {
+    "broccoli": { "calories": 34, "proteins": 2.8, "fats": 0.4, "carbs": 6.6 },
+    "carrot": { "calories": 41, "proteins": 0.9, "fats": 0.2, "carbs": 9.6 },
+    "pepper": { "calories": 31, "proteins": 1, "fats": 0.3, "carbs": 6 },
+    "chicken": { "calories": 239, "proteins": 27, "fats": 14, "carbs": 0 },
+    "beef": { "calories": 250, "proteins": 26, "fats": 15, "carbs": 0 },
+    "pork": { "calories": 242, "proteins": 22, "fats": 14, "carbs": 0 },
+    "bread": { "calories": 265, "proteins": 9, "fats": 3.2, "carbs": 49 },
+    "croissant": { "calories": 406, "proteins": 8.2, "fats": 21, "carbs": 45 },
+    "muffin": { "calories": 377, "proteins": 6, "fats": 14, "carbs": 56 },
+    "apple": { "calories": 52, "proteins": 0.3, "fats": 0.2, "carbs": 14 },
+    "banana": { "calories": 89, "proteins": 1.1, "fats": 0.3, "carbs": 23 },
+    "orange": { "calories": 47, "proteins": 0.9, "fats": 0.1, "carbs": 12 },
+    "salmon": { "calories": 208, "proteins": 20, "fats": 13, "carbs": 0 },
+    "tuna": { "calories": 132, "proteins": 29, "fats": 1, "carbs": 0 },
+    "trout": { "calories": 119, "proteins": 20, "fats": 4, "carbs": 0 },
+    "milk": { "calories": 42, "proteins": 3.4, "fats": 1, "carbs": 5 },
+    "cheese": { "calories": 402, "proteins": 25, "fats": 33, "carbs": 1.3 },
+    "yogurt": { "calories": 59, "proteins": 10, "fats": 0.4, "carbs": 3.6 },
+    "chocolate": { "calories": 546, "proteins": 7.6, "fats": 31, "carbs": 61 },
+    "cookie": { "calories": 502, "proteins": 5, "fats": 24, "carbs": 70 },
+    "ice_cream": { "calories": 207, "proteins": 3.5, "fats": 11, "carbs": 24 }
+  }
+}
